@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class InvestigacaoCrime {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] perguntas = {
+            "Telefonou para a vítima?",
+            "Esteve no local do crime?",
+            "Mora perto da vítima?",
+            "Devia para a vítima?",
+            "Já trabalhou com a vítima?",
+            "Foi vista nas proximidades no dia do crime?",
+            "Possui algum objeto da vítima?",
+            "Tentou fugir após o crime?"
+        };
+
+        int contSim = 0;
+
+        for (String pergunta : perguntas) {
+            System.out.print(pergunta + " (s/n): ");
+            String resp = sc.next().toLowerCase();
+            if (resp.equals("s")) contSim++;
+        }
+
+        System.out.println("\nClassificação: ");
+        if (contSim == 2) {
+            System.out.println("Suspeita");
+        } else if (contSim >= 3 && contSim <= 4) {
+            System.out.println("Cúmplice");
+        } else if (contSim >= 5) {
+            System.out.println("Assassino");
+        } else {
+            System.out.println("Inocente");
+        }
+
+        sc.close();
+    }
+}
