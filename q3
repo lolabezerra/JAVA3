@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class PostoCombustivel {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite o tipo de combustível (A-Álcool, G-Gasolina): ");
+        char tipo = sc.next().toUpperCase().charAt(0);
+
+        System.out.print("Digite a quantidade de litros vendidos: ");
+        double litros = sc.nextDouble();
+
+        double precoLitro, desconto = 0, valorSemDesconto, valorComDesconto;
+
+        if (tipo == 'A') {
+            precoLitro = 1.90;
+            if (litros <= 25) desconto = 0.035;
+            else desconto = 0.053;
+        } else if (tipo == 'G') {
+            precoLitro = 2.50;
+            if (litros <= 35) desconto = 0.04;
+            else desconto = 0.06;
+        } else {
+            System.out.println("Tipo inválido!");
+            sc.close();
+            return;
+        }
+
+        valorSemDesconto = precoLitro * litros;
+        valorComDesconto = valorSemDesconto - (valorSemDesconto * desconto);
+
+        System.out.println("Valor a ser pago: R$ " + valorComDesconto);
+
+        sc.close();
+    }
+}
